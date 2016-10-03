@@ -1,0 +1,18 @@
+%fieldset.post-container
+  %form.form-horizontal
+    %legend.police.sign-text Submit a new post
+    .form-group
+      %label.col-md-1.control-label{for: "username"} Name
+      .col-md-4
+        %input#username.form-control.input-md.input-create-post{name: "title", placeholder: "Some random title", required: "", type: "text"}/
+    .form-group
+      %label.col-md-1.control-label{for: "mail"} Description
+      .col-md-4
+        %textarea#mail.form-control.input-md.input-create-post.input-describe{name: "mail", required: ""}
+    .form-group
+      %label.col-md-1.control-label{for: "file"} Picture
+      .col-md-4
+        %input.input-create-post{name: "file", placeholder: "", required: "", type: "file"}/
+    .form-group
+      .col-sm-offset-5.col-sm-10
+        %input#submit-sign.btn.btn-default{name: "submit", placeholder: "", required: "", type: "submit", value: "Let's go !"}/

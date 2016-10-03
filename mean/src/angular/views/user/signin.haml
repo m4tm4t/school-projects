@@ -1,0 +1,22 @@
+%fieldset.sign-container
+  %form.form-horizontal{ name: "signinForm", ng-submit: "signinForm.$valid && submit()", novalidate: "novalidate" }
+    %legend.police.sign-text Sign in
+
+    %uib-alert{ ng-repeat: "alert in alerts", type: "{{ alert.type }}" }
+      {{ alert.msg }}
+
+    .form-group
+      %label.col-md-5.control-label{for: "username"} Username or Mail
+      .col-md-4
+        %input#username.form-control.input-md{ ng-model: "user.username", name: "username", placeholder: "John Doe", required: "true", type: "text" }
+        %div{ ng-if: "signinForm.username.$touched", ng-messages: "signinForm.username.$error" }
+          .error{ng-message: "required" } Username is required
+    .form-group
+      %label.col-md-5.control-label{for: "password"} Password
+      .col-md-4
+        %input#password.form-control.input-md{ ng-model: "user.password", name: "password", required: "true", type: "password" }
+        %div{ ng-if: "signinForm.password.$touched", ng-messages: "signinForm.password.$error" }
+          .error{ng-message: "required" } Password is required
+    .form-group
+      .col-sm-offset-5.col-sm-10
+        %input#submit-sign.btn.btn-default{ name: "submit", type: "submit", value: "Connect" }

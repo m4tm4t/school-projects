@@ -1,0 +1,29 @@
+.orbefore {
+  border: 1px solid red; }
+
+select.unit_type {
+  font-size: 18px; }
+
+.tt-hint {
+  color: green; }
+
+.typeahead {
+  padding: 5px; }
+
+.tt-dropdown-menu {
+  width: auto;
+  border: 1px solid #424242;
+  background-color: #FFFFFF; }
+
+.tt-suggestion {
+  padding: 5px; }
+  .tt-suggestion:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #0097cf; }
+  .tt-suggestion.tt-cursor {
+    color: #fff;
+    background-color: #0097cf; }
+
+.twitter-typeahead {
+  width: 100%; }

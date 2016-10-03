@@ -1,0 +1,15 @@
+.ng-invalid.ng-touched {
+    border-color: red;
+    outline-color: red;
+}
+
+.ng-valid.ng-touched {
+    border-color: green;
+    outline-color: green;
+}
+
+.error {
+  color: red;
+  font-family: sans-serif;
+  font-size: 10px;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "marmiton",
+  "version": "1.0.0",
+  "description": "Marmiton project",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-haml": "^0.1.5",
+    "gulp-inject-string": "0.0.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.5",
+    "hamljs": "^0.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mathieu Robardey <mathieu@m4t.coffee>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/foohey/rss_feed#readme"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "marmiton",
+  "version": "0.0.0",
+  "authors": [
+    "Mathieu Robardey <mathieu@altagem.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "angular": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "angular-rest-orm": "~0.4.5",
+    "ui-router": "~0.2.15",
+    "angular-ui-router": "~0.2.15",
+    "angular-typeahead": "~0.2.3",
+    "js-data-angular": "~3.0.0",
+    "js-data": "~2.2.3",
+    "underscore": "~1.8.3",
+    "angular-bootstrap": "~0.13.3",
+    "font-awesome-bower": "~4.4.0"
+  }
+}

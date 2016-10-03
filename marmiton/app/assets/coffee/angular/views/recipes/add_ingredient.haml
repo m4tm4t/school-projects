@@ -1,0 +1,27 @@
+%script{ id: "add_ingredient.html", type: "text/ng-template" }
+  .modal-header
+    %h3.modal-title Add ingredient
+
+  .modal-body
+    %form{name: "addIngredientForm"}
+      .form-group
+        %input.form-control{ type: "text", options: "thOptions", datasets: "thData", ng-model: "searchResult", class: "typeahead sf-typeahead", placeholder: "Type ingredient name"}
+
+      .panel.panel-default{ng-if: "recipe_ingredient.ingredient"}
+        .panel-heading
+          %h4 {{ recipe_ingredient.ingredient.name }}
+        .panel-body
+          .form-group
+            %select.form-control{ class: "unit_type", ng-model: "recipe_ingredient.unit_type", ng-options: "unit.unit_type as unit.name for unit in units", ng-required: "true" }
+              <option value="">Choose unit type</option>
+
+          .form-group
+            .input-group{style: "width: 100%"}
+              %input.form-control{ style: "width: 50% !important", placeholder: "Value", ng-model: "recipe_ingredient.unit_value", ng-required: "true"}
+              %select.form-control{ style: "width: 50% !important", ng-model: "recipe_ingredient.unit", ng-if: "getUnits(recipe_ingredient.unit_type)", ng-options: "v as k for (k, v) in getUnits(recipe_ingredient.unit_type)", ng-required: "true" }
+                <option value="">Choose unit</option>
+
+  .modal-footer
+    %button.btn.btn-primary{ ng-click: "!addIngredientForm.$valid || add()", ng-disabled: "!recipe_ingredient.ingredient || !addIngredientForm.$valid" }
+      {{ isEdition? 'Update' : 'Add' }}
+    %button.btn.btn-default{ ng-click: "cancel()"} Cancel

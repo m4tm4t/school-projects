@@ -1,0 +1,34 @@
+!!!5
+%html{ ng-app: "app" }
+  %head
+    %title Marmiton
+    %base{href: "/"}
+    <?= stylesheet_tag( 'vendor.css' ) ?>
+    <?= stylesheet_tag( 'vendor2.css' ) ?>
+    <?= stylesheet_tag( 'app.css' )    ?>
+
+  %body{ ng-controller: "appCtrl" }
+    #page
+    #header
+      .navbar.navbar-default.navbar-fixed-top
+        .container
+          .navbar-header
+            %a.navbar-brand{href: "/#/"} Marmiton
+
+    #page_block.wrapper
+      <?php if ( $notice = $this->getNotice() ): ?>
+        .alert{class: "alert-<?= $notice[0] ?>" }
+          <?= $notice[1] ?>
+      <?php endif ?>
+
+      .container
+        <div ui-view>
+        </div>
+
+  :javascript
+    var $units = <?= json_encode( getUnitTypes() ) ?>;
+
+
+  <?= javascript_tag( 'vendor.js' )            ?>
+  %ng-include{src: "'templates.html'"}
+  <?= javascript_tag( 'app.js' )               ?>

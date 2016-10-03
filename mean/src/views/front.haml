@@ -1,0 +1,30 @@
+!!!5
+%html{lang: "en", ng-app: "app"}
+  %head
+    %meta{charset: "utf-8"}
+    %title Sweets&Kittens
+    %link{href: "/css/style.css", rel: "stylesheet"}
+    %script{src: "/js/vendor.js"}
+    %script{src: "/angular/app.js"}
+    %link{href: "https://fonts.googleapis.com/css?family=Indie+Flower", rel: "stylesheet"}
+  %body{ng-controller: "appCtrl"}
+
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{href: "#/"} Sweets&Kittens
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %form#search.navbar-form.navbar-left{role: "search"}
+            .form-group
+              %input#search-input.form-control{placeholder: "Search", :type : "text"}
+            %button.btn.btn-default{type: "submit"} Go
+          .navbar-right{role: "sign"}
+            %div{ ng-if: "currentUser" }
+              %p.navbar-text Welcome, {{ currentUser.username }} !
+              %a.navbar-btn.btn.btn-info{ ng-if: "currentUser.is_admin", href: "/#/admin" } Admin
+              %a.navbar-btn.btn.btn-default{ ng-click: "logout()" } Logout
+            %div{ ng-if: "!currentUser" }
+              %a#sign-up.navbar-btn.btn.btn-default{href: "/#/signup"} Sign up
+              %a.navbar-btn.btn.btn-default{href: "/#/signin"} Sign in
+
+    .ng-view

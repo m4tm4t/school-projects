@@ -1,0 +1,20 @@
+%script{ id: "add_comment.html", type: "text/ng-template" }
+  .modal-header
+    %h3.modal-title Ajouter un commentaire
+
+  .modal-body
+    %form{name: "addCommentForm"}
+      .form-group
+        %label * Votre nom
+        %input.form-control{ng-required: "true", ng-model: "comment.username"}
+      .form-group
+        %label * Commentaire
+        %textarea.form-control{ng-required: "true", ng-model: "comment.body"}
+      .form-group
+        %label * Note
+        %rating{ng-model: "comment.note", max: "5", state-on: "'fa fa-star'", state-off: "'fa fa-star-o'"}
+
+  .modal-footer
+    %button.btn.btn-primary{ ng-click: "!addCommentForm.$valid || add()", ng-disabled: "!addCommentForm.$valid" }
+      {{ isEdition? 'Update' : 'Ajouter' }}
+    %button.btn.btn-default{ ng-click: "cancel()"} Annuler

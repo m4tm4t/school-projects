@@ -1,0 +1,23 @@
+%script{id: "home", type: "text/ng-template"}
+  .jumbotron
+    %h2 Welcome Greedy!
+    %p
+      %a.btn.btn-primary{href: "/#/recipes/add"}
+        Create a recipe
+
+  .well
+    %form{ng-submit: "foo()"}
+      .input-group
+        %input.form-control{placeholder: "Trouver une recette", ng-model: "searchTerm"}
+        %span.input-group-addon.btn.btn-primary{ng-click: "foo()"}
+          .fa.fa-search
+
+  %h3 Les dernières recettes
+  .row
+    .col-md-4{ng-repeat: "recipe in recipes track by $index"}
+      %a.recipe{ng-href: "/#/recipes/{{recipe.id}}"}
+        .panel.panel-default
+          .panel-heading
+            %h4 {{ recipe.name }}
+          .panel-body
+            %img.thumbnail{ ng-src: "/recipe-{{ recipe.id }}.jpg", width: "100%"  }

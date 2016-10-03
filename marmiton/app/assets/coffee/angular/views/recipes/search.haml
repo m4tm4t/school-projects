@@ -1,0 +1,44 @@
+%script{ id: "searchRecipe", type: "text/ng-template" }
+  %h3 Rechercher une recette
+  .row
+    .col-md-6
+      .well
+        %form{ng-submit: "foo()"}
+          .form-group
+            %label Recherche avec mot(s) clé(s)
+            .input-group
+              %input.form-control{placeholder: "Trouver une recette", ng-model: "searchTerm"}
+              %span.input-group-addon.btn.btn-primary{ng-click: "foo()"}
+                .fa.fa-search
+    .col-md-6
+      .well
+        .form-group
+          %label Recherche avec ingrédients
+          %input.form-control{ type: "text", options: "thOptions", datasets: "thData", ng-model: "searchResult", class: "typeahead sf-typeahead", placeholder: "Type ingredient name"}
+
+        %span.btn.btn-primary{style: "margin-left: 5px", ng-repeat: "ingredient in ingredients track by $index"}
+          .pull-left
+            {{ ingredient.name }}
+          .pull-right
+            &nbsp;&nbsp;
+            %a.btn.btn-danger.btn-xs{ng-click: "removeIngredient($index)"}
+              .fa.fa-times
+
+
+  .alert.alert-success{ng-if: "recipes.length"}
+    {{ recipes.length }} résultat(s)
+
+  .row{ng-if: "recipes.length"}
+    .col-md-4{ng-repeat: "recipe in recipes track by $index"}
+      %a.recipe{ng-href: "/#/recipes/{{recipe.id}}"}
+        .panel.panel-default
+          .panel-heading
+            %h4 {{ recipe.name }}
+          .panel-body
+            %img.thumbnail{ ng-src: "/recipe-{{ recipe.id }}.jpg", width: "100%"  }
+
+  .alert.alert-info{ng-if: "!recipes.length && !ingredients.length"}
+    Aucun résultat pour la recherche « <i>{{ $stateParams.term }}</i> »
+
+  .alert.alert-info{ng-if: "!recipes.length && ingredients.length"}
+    Aucun résultat pour la recherche avec les ingrédients « <i>{{ ingToS() }}</i> »

@@ -1,0 +1,44 @@
+%script{id: "showRecipe", type: "text/ng-template"}
+  %h2 {{ recipe.name }}
+  .well {{ recipe.description }}
+
+  .row
+    .col-md-6
+      %img.thumbnail{width: "100%", ng-src: "/recipe-{{recipe.id}}.jpg"}
+    .col-md-6
+      .panel.panel-default
+        .panel-heading
+          %h4 Ingredients
+        .panel-body
+          %ul.nav.nav-pills.nav-stacked
+            %li{ng-repeat: "ri in recipe.recipe_ingredients"}
+              %a
+                .pull-left
+                  {{ ri.ingredient.name }}
+                .pull-right
+                  .label.label-default
+                    {{ humanizeUnits(ri) }}
+                .clearfix
+
+  %h3 Etapes
+  %hr
+  .step{ng-repeat: "step in recipe.steps track by $index"}
+    %h4 Etape {{$index+1}} - {{ step.title }}
+    %p {{ step.body }}
+
+  %h3
+    Commentaires
+  %hr
+  %a.btn.btn-primary{ng-click: "addComment()"}
+    .fa.fa-plus
+    &nbsp;&nbsp;
+    Rédiger un commentaire
+  %br
+  %br
+
+  .panel.panel-default{ng-repeat: "comment in recipe.comments"}
+    .panel-heading
+      %rating{readonly: "true", ng-model: "comment.note", max: "5", state-on: "'fa fa-star'", state-off: "'fa fa-star-o'"}
+      Par {{ comment.username }}
+    .panel-body
+      {{ comment.body }}

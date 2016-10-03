@@ -1,0 +1,29 @@
+%fieldset.sign-container
+  %form.form-horizontal{ name: "signupForm", ng-submit: "signupForm.$valid && submit()", novalidate: "novalidate" }
+    %legend.police.sign-text Sign up !
+
+    %uib-alert{ ng-repeat: "alert in alerts", type: "{{ alert.type }}" }
+      {{ alert.msg }}
+
+    .form-group
+      %label.col-md-5.control-label{for: "username"} Username
+      .col-md-4
+        %input#username.form-control.input-md{name: "username", ng-model: "user.username", placeholder: "John Doe", required: "true", type: "text"}
+    .form-group
+      %label.col-md-5.control-label{for: "mail"} Mail
+      .col-md-4
+        %input#mail.form-control.input-md{name: "email", ng-model: "user.email", placeholder: "john.doe@mail.net", required: "true", type: "text"}
+    .form-group
+      %label.col-md-5.control-label{for: "password"} Password
+      .col-md-4
+        %input#password.form-control.input-md{name: "password", ng-model: "user.password", required: "true", type: "password"}
+    .form-group
+      %label.col-md-5.control-label{for: "passwordConfirm"} Confirm Password
+      .col-md-4
+        %input#passwordConfirm.form-control.input-md{equal-to: "user.password", name: "passwordConfirm", ng-model: "user.passwordConfirm", required: "true", type: "password"}
+        %div{ ng-messages: "signupForm.passwordConfirm.$error" }
+          .error{ng-message: "equalTo" } Confirmation doesn't match password
+
+    .form-group
+      .col-sm-offset-5.col-sm-10
+        %input#submit-sign.btn.btn-default{ ng-disabled: "!signupForm.$valid", name: "submit", type: "submit", value: "Let's go !"}
